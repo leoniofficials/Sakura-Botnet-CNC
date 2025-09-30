@@ -14,8 +14,10 @@ The CNC server issues commands to connected agents and coordinates their activit
 - **Research & Scanning (research-only):** Using isolated resources to study scanning behaviors and detection methods.  
 - **Logging & Monitoring:** Centralized logging for analysis and incident review (example log filename references may exist for analysis purposes).
 
-**Technical Shape (non-technical):**  
-Source components are typically written in languages like C for agent code and may use helper scripts for packaging. Tool names may be present in repository filenames; this README does not provide build or runtime instructions.
-
 **Intended Purpose & Warning:**  
 Sakura is intended solely for **research, security education, and detection practice**. This project must be tested **only in isolated and authorized test environments** (e.g., offline labs, virtual machines you control). **Do not use for unauthorized or harmful activities.**
+
+**Contact Me:**  
+- **Website:** https://sususoftware.xyz
+- **Discord:** leoniofficials
+  
