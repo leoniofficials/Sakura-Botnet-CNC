@@ -1,4 +1,4 @@
-# Sakura Botnet — CNC Overview
+# Sakura Botnet — CNC 
 
 **English**
 
