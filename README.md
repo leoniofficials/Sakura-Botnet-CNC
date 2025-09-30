@@ -1,6 +1,6 @@
 # Sakura Botnet — CNC 
 
-**English**
+-------------------
 
 **Overview:**  
 This document describes the purpose and architecture of a Command-and-Control (C&C / CNC) system named **Sakura**, intended for CentOS 6 or 7 VPS environments. Sakura models an IRC-style management system whose primary function is to coordinate distributed agents (bots) from a central server.
@@ -21,3 +21,4 @@ Sakura is intended solely for **research, security education, and detection prac
 - **Website:** https://sususoftware.xyz
 - **Discord:** leoniofficials
   
+-------------------
