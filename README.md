@@ -21,4 +21,5 @@ Sakura is intended solely for **research, security education, and detection prac
 - **Website:** https://sususoftware.xyz
 - **Discord:** leoniofficials
 - **Instagram:** leoniofficials
+- **Mail:** susuvhc@gmail.com
 -------------------
